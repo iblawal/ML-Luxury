@@ -1,0 +1,52 @@
+{
+  "name": "ml-luxury",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "format": "prettier --write \"**/*.{js,ts,jsx,tsx,json,md,css,scss}\"",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky install",
+    "postinstall": "next telemetry disable || true"
+  },
+  "dependencies": {
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.4",
+    "axios": "^1.6.0",
+    "clsx": "^1.2.1",
+    "embla-carousel": "^8.0.0",
+    "embla-carousel-autoplay": "^8.0.0",
+    "embla-carousel-react": "^8.0.0",
+    "framer-motion": "^12.23.24",
+    "lucide-react": "^0.260.0",
+    "next": "^16.0.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "typescript": "^5.9.3",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@types/clsx": "^1.1.1",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "autoprefixer": "^10.4.22",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-next": "^14.0.0",
+    "eslint-plugin-import": "^2.28.0",
+    "eslint-plugin-jsx-a11y": "^7.8.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^14.0.0",
+    "postcss": "^8.5.6",
+    "prettier": "^2.9.0",
+    "tailwindcss": "^4.1.17"
+  }
+}
