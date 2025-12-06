@@ -13,7 +13,7 @@ const NAVBAR_CONFIG = {
     { id: "shop", label: "Shop", href: "#shop" },
     { id: "about", label: "About", href: "#about" },
     {id: "testimonials", label: "Testimonials", href: "#testimonials"},
-    { id: "contact", label: "Contact", href: "#contact" },
+    { id: "contact", label: "Contact ", href: "#contact" },
   ],
   colors: {
     background: "#F4EDE3",

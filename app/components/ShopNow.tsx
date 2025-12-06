@@ -143,7 +143,6 @@ const SHOP: Shop[] = [
     id: "a17",
     name: "Premium Nike Socks",
     desc: "Luxury Nike Socks.",
-    color:["Pink","Light Brown","Black"," Green"," Blue"],
     price: 60000,
     image: "/shop-17.jpg",
   },
