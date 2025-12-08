@@ -313,9 +313,9 @@ export default function Navbar() {
             aria-hidden="true"
           />
 
-          {/* Sidebar */}
+          {/* Sidebar - ROUNDED BORDER ADDED HERE! */}
           <div
-            className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#F4EDE3] z-[60] md:hidden shadow-2xl overflow-hidden"
+            className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#F4EDE3] z-[60] md:hidden shadow-2xl overflow-hidden rounded-l-[40px]"
           >
             <div className="flex flex-col h-full">
               {/* Sidebar Header */}
