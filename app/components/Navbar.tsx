@@ -12,8 +12,8 @@ const NAVBAR_CONFIG = {
     { id: "categories", label: "Categories", href: "#categories" },
     { id: "shop", label: "Shop", href: "#shop" },
     { id: "about", label: "About", href: "#about" },
-    {id: "testimonials", label: "Testimonials", href: "#testimonials"},
-    { id: "contact", label: "Contact ", href: "#contact" },
+    { id: "testimonials", label: "Testimonials", href: "#testimonials" },
+    { id: "contact", label: "Contact", href: "#contact" },
   ],
   colors: {
     background: "#F4EDE3",
@@ -78,16 +78,14 @@ export default function Navbar() {
   }, []);
 
   const handleNavigation = useCallback((href: string) => {
-    if (href.startsWith('#')) {
+    if (href.startsWith("#")) {
       // Smooth scroll to section
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     } else {
-
       console.log(`Navigating to: ${href}`);
-    
     }
     setIsMobileMenuOpen(false);
   }, []);
@@ -225,7 +223,7 @@ export default function Navbar() {
               {/* Mobile Menu Button */}
               <button
                 onClick={toggleMobileMenu}
-                className="md:hidden p-2 rounded-lg text-[#4A2E1F] hover:bg-[#D8A878]/40 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D8A878]"
+                className="md:hidden p-2 rounded-lg text-[#4A2E1F] hover:bg-[#D8A878]/40 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D8A878] z-[60]"
                 aria-label="Toggle menu"
                 aria-expanded={isMobileMenuOpen}
               >
@@ -306,98 +304,94 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Sidebar */}
-      <>
-        {/* Overlay */}
-        <div
-          className={`fixed inset-0 bg-black z-40 transition-opacity duration-300 md:hidden ${
-            isMobileMenuOpen
-              ? "opacity-50 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          }`}
-          onClick={toggleMobileMenu}
-          aria-hidden="true"
-        />
+      {isMobileMenuOpen && (
+        <>
+          {/* Overlay */}
+          <div
+            className="fixed inset-0 bg-black/50 z-[55] md:hidden"
+            onClick={toggleMobileMenu}
+            aria-hidden="true"
+          />
 
-        {/* Sidebar */}
-        <div
-          className={`fixed top-0 right-0 h-full w-80 bg-[#F4EDE3] z-50 transform transition-transform duration-300 ease-in-out md:hidden shadow-2xl rounded-l-[40px] ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="flex flex-col h-full">
-            {/* Sidebar Header */}
-            <div className="flex items-center justify-between p-6 border-b border-[#4A2E1F]/20">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-full border-2 border-[#4A2E1F] flex items-center justify-center font-bold text-[#4A2E1F]">
-                  {NAVBAR_CONFIG.brand.name}
+          {/* Sidebar */}
+          <div
+            className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#F4EDE3] z-[60] md:hidden shadow-2xl overflow-hidden"
+          >
+            <div className="flex flex-col h-full">
+              {/* Sidebar Header */}
+              <div className="flex items-center justify-between p-6 border-b border-[#4A2E1F]/20">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-full border-2 border-[#4A2E1F] flex items-center justify-center font-bold text-[#4A2E1F]">
+                    {NAVBAR_CONFIG.brand.name}
+                  </div>
+                  <span className="font-semibold text-[#4A2E1F]">Menu</span>
                 </div>
-                <span className="font-semibold text-[#4A2E1F]">Menu</span>
-              </div>
-              <button
-                onClick={toggleMobileMenu}
-                className="p-2 rounded-lg text-[#4A2E1F] hover:bg-[#D8A878]/40 transition-colors duration-200"
-                aria-label="Close menu"
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                <button
+                  onClick={toggleMobileMenu}
+                  className="p-2 rounded-lg text-[#4A2E1F] hover:bg-[#D8A878]/40 transition-colors duration-200 active:scale-95"
+                  aria-label="Close menu"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
 
-            {/* Navigation Links */}
-            <nav className="flex-1 overflow-y-auto p-6">
-              <ul className="space-y-2">
-                {NAVBAR_CONFIG.navigation.map((item) => (
-                  <li key={item.id}>
-                    <button
-                      onClick={() => handleNavigation(item.href)}
-                      className="w-full text-left px-4 py-3 rounded-lg font-medium text-[#4A2E1F] hover:bg-[#D8A878]/40 hover:text-[#D8A878] transition-all duration-200 flex items-center justify-between group"
-                    >
-                      {item.label}
-                      <svg
-                        className="w-5 h-5 transform transition-transform duration-200 group-hover:translate-x-1"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+              {/* Navigation Links */}
+              <nav className="flex-1 overflow-y-auto p-6">
+                <ul className="space-y-2">
+                  {NAVBAR_CONFIG.navigation.map((item) => (
+                    <li key={item.id}>
+                      <button
+                        onClick={() => handleNavigation(item.href)}
+                        className="w-full text-left px-4 py-3 rounded-lg font-medium text-[#4A2E1F] hover:bg-[#D8A878]/40 hover:text-[#D8A878] transition-all duration-200 flex items-center justify-between group active:scale-95"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+                        {item.label}
+                        <svg
+                          className="w-5 h-5 transform transition-transform duration-200 group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
-            {/* Sidebar Footer */}
-            <div className="p-6 border-t border-[#4A2E1F]/20">
-              <p className="text-sm text-center mb-4 text-[#4A2E1F]/70">
-                Need help? Contact us
-              </p>
-              <button
-                onClick={() => handleNavigation("/contact")}
-                className="w-full py-3 rounded-lg font-semibold bg-[#D8A878] text-[#4A2E1F] hover:scale-102 transition-transform duration-200"
-              >
-                Get in Touch
-              </button>
+              {/* Sidebar Footer */}
+              <div className="p-6 border-t border-[#4A2E1F]/20">
+                <p className="text-sm text-center mb-4 text-[#4A2E1F]/70">
+                  Need help? Contact us
+                </p>
+                <button
+                  onClick={() => handleNavigation("/contact")}
+                  className="w-full py-3 rounded-lg font-semibold bg-[#D8A878] text-[#4A2E1F] hover:bg-[#D8A878]/80 transition-all duration-200 active:scale-95"
+                >
+                  Get in Touch
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </>
+        </>
+      )}
 
       {/* Spacer */}
       <div className="h-16 md:h-20" />
